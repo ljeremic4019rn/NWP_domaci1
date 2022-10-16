@@ -1,0 +1,24 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a [routerLink]="'/'" class="navbar-brand">N-Web dom 1</a>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a [routerLink]="'/'" class="nav-link active" aria-current="page">Entity Extraction</a>
+          <a [routerLink]="'#'" class="nav-link active" aria-current="page">Text Similarity</a>
+          <a [routerLink]="'#'" class="nav-link active" aria-current="page">Language Detection</a>
+          <a [routerLink]="'#'" class="nav-link active" aria-current="page">Sentiment Analysis</a>
+          <a [routerLink]="'#'" class="nav-link active" aria-current="page">Token Entry</a>
+          <a [routerLink]="'#'" class="nav-link active" aria-current="page">Api History</a>
+        </div>
+        <div class="d-flex">
+          <span>{{ getUserName() }}</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container pt-3">
+  <router-outlet></router-outlet>
+</div>
