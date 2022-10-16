@@ -5,11 +5,11 @@
       <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a [routerLink]="'/'" class="nav-link active" aria-current="page">Entity Extraction</a>
-          <a [routerLink]="'#'" class="nav-link active" aria-current="page">Text Similarity</a>
-          <a [routerLink]="'#'" class="nav-link active" aria-current="page">Language Detection</a>
-          <a [routerLink]="'#'" class="nav-link active" aria-current="page">Sentiment Analysis</a>
-          <a [routerLink]="'#'" class="nav-link active" aria-current="page">Token Entry</a>
-          <a [routerLink]="'#'" class="nav-link active" aria-current="page">Api History</a>
+          <a [routerLink]="'/textSimilarity'" class="nav-link active" aria-current="page">Text Similarity</a>
+          <a [routerLink]="'/languageDetection'" class="nav-link active" aria-current="page">Language Detection</a>
+          <a [routerLink]="'/sentimentAnalysis'" class="nav-link active" aria-current="page">Sentiment Analysis</a>
+          <a [routerLink]="'/tokenEntry'" class="nav-link active" aria-current="page">Token Entry</a>
+          <a [routerLink]="'/apiHistory'" class="nav-link active" aria-current="page">Api History</a>
         </div>
         <div class="d-flex">
           <span>{{ getUserName() }}</span>
