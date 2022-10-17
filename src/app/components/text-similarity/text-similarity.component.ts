@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from "../../services/post.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {TextSimReq} from "../../model";
 
 @Component({
   selector: 'app-text-similarity',
@@ -35,6 +34,9 @@ export class TextSimilarityComponent implements OnInit {
       console.log(result)
       this.simResult = result.similarity*100 //todo ima inf broj 999999 iseci na 2 decimale
     })
+
+
+    // console.log(this.textSimService.test(new Color(255,0,0), new Color(0,255,0), 0.7))
   }
 
 }

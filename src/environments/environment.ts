@@ -6,10 +6,10 @@ import {Transaction} from "../app/model";
 
 export const environment = {
   production: false,
-  entityExtraction: '',
+  entityExtraction: 'https://api.dandelion.eu/datatxt/nex/v1\n',
   textSimilarity: 'https://api.dandelion.eu/datatxt/sim/v1',
-  languageDetection: '',
-  sentimentAnalysis: '',
+  languageDetection: 'https://api.dandelion.eu/datatxt/li/v1\n',
+  sentimentAnalysis: 'https://api.dandelion.eu/datatxt/sent/v1\n',
 
 };
 

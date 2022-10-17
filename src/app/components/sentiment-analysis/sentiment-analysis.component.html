@@ -1,1 +1,23 @@
-<p>sentiment-analysis works!</p>
+<div>
+  <h3>Sentiment analysis</h3>
+  <div class="form-group">
+    <label for="languageSelection">Language selection</label>
+    <select [(ngModel)]="lang" class="form-control" id="languageSelection">
+      <option>auto</option>
+      <option>en</option>
+      <option>it</option>
+    </select>
+  </div>
+  <form [formGroup]="sentimentForm" (submit)="analyseSentiment()" class="mb-5">
+    <div class="form-group">
+      <label for="text">Text</label>
+      <textarea class="form-control" id="text" placeholder="Enter your text" rows="4" [formControlName]="'text'"></textarea>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <p>The strength of the detected sentiment is <b>{{ resultSentiment.score.toFixed(2) }}</b>
+<!--    and its type is <b [style]="{color: typeColor}">{{ resultSentiment.type }}</b>.</p>-->
+    and its type is <b [style]="{color: typeColor}">{{ resultSentiment.type }}</b>.</p>
+
+</div>

@@ -1,1 +1,40 @@
-<p>entity-extraction works!</p>
+<div>
+  <h3>Entity extraction</h3>
+  <label for="text">Include:</label>
+  <div class="form-check">
+    <input [(ngModel)]="includeAbstract" class="form-check-input" type="checkbox" value="abstract" id="defaultCheck1">
+    <label class="form-check-label" for="defaultCheck1">abstract</label>
+  </div>
+  <div class="form-check">
+    <input [(ngModel)]="includeCategories" class="form-check-input" type="checkbox" value="categories" id="defaultCheck2">
+    <label class="form-check-label" for="defaultCheck2">categories</label>
+  </div>
+  <div class="form-check">
+    <input [(ngModel)]="includeImage" class="form-check-input" type="checkbox" value="image" id="defaultCheck3">
+    <label class="form-check-label" for="defaultCheck3">image</label>
+  </div>
+  <br>
+  <label for="text">Minimum confidence slider</label>
+  <br>
+  <input [(ngModel)]="min_confidence" type="range" name="min_confidence" value="0.6" id="id_min_confidence"
+         class="rangeinput" max="1.0" step="0.01" min="0.0" oninput="this.nextElementSibling.value = this.value">
+  <output>0.6</output>
+
+  <form [formGroup]="extractionForm" (submit)="extractEntities()" class="mb-5">
+    <div class="form-group">
+      <br>
+      <label for="text">Text</label>
+      <textarea class="form-control" id="text" placeholder="Enter your text" rows="4" [formControlName]="'text'"></textarea>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <p>The extracted entities are:</p>
+  <div *ngFor="let entity of resultArray; let i = index;" class="mb-2">
+    <p><b>Title: </b>{{ entity.title }}</p>
+    <p *ngIf="entity.abstract!=null"><b>Abstract: </b>{{ entity.abstract }}</p>
+    <p *ngIf="entity.categories!=null"><b>Categories: </b>{{ entity.categories }}</p>
+    <p *ngIf="entity.image!=null"><b>Image: </b><img src="{{ entity.image.thumbnail }}"></p>
+    <hr>
+  </div>
+</div>

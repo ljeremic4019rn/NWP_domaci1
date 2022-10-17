@@ -1,7 +1,6 @@
 <div>
   <div *ngFor="let transaction of savedTransactions; let i = index;" class="mb-2">
-    <h3>{{ i+1 }}. Transaction at: {{transaction.date}} <> {{transaction.time}} </h3>
-    <p>{{ transaction.method }} -- {{ transaction.url }}</p>
+    <p>{{ i+1 }}.  At: {{transaction.date}}-{{transaction.time}} --> {{ transaction.method }} - {{ transaction.url }} </p>
     <hr>
   </div>
 </div>

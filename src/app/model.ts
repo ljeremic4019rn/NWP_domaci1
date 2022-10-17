@@ -1,9 +1,43 @@
 
-export interface TextSimReq {
-  text1: string,
-  text2: string,
+export class Entity {
+  title: string = ''
+  abstract: string = ''
+  categories: [] = []
+  image: Image = new Image
+}
+
+export class Image {
+  full: string = ''
+  thumbnail: string = ''
+}
+
+export interface EntityExtObj {
+  text: string,
+  token: string
+  annotations: []
+}
+
+export class DetectedLang {
+  lang: string = ''
+  confidence: number = 0
+}
+
+export interface LanguageDetReq {
+  text: string,
+  option: boolean,
   token: string,
-  similarity: number
+  detectedLangs: Array<DetectedLang>
+}
+
+export class Sentiment {
+  score: number = 0
+  type: string = ''
+}
+
+export interface SentimentAnObj {
+  text: string,
+  token: string,
+  sentiment: Sentiment
 }
 
 export interface TextSimRes {
@@ -14,9 +48,15 @@ export interface TextSimRes {
   timestamp: string
 }
 
-export class DetectedLang {
-  lang: string = '';
-  confidence: number = 0;
+export class Color {
+  constructor(r: number, g: number, b: number) {
+    this.r = r
+    this.g = g
+    this.b = b
+  }
+  r = 0
+  g = 0
+  b = 0
 }
 
 export interface LanguageDetReq {
