@@ -2,12 +2,15 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import {Transaction} from "../app/model";
+
 export const environment = {
   production: false,
   entityExtraction: '',
   textSimilarity: 'https://api.dandelion.eu/datatxt/sim/v1',
   languageDetection: '',
-  sentimentAnalysis: ''
+  sentimentAnalysis: '',
+
 };
 
 /*

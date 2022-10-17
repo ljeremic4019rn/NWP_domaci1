@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PostService} from "../../services/post.service";
+import {Transaction} from "../../model";
 
 @Component({
   selector: 'app-api-history',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApiHistoryComponent implements OnInit {
 
-  constructor() { }
+  savedTransactions: Transaction[] = []
+
+  constructor(private postService: PostService) { }
 
   ngOnInit(): void {
+    this.savedTransactions = this.postService.savedTransactions
   }
-
 }

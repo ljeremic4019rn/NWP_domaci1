@@ -13,6 +13,7 @@ export class TextSimilarityComponent implements OnInit {
   simResult: number
   textForm: FormGroup;
 
+
   constructor(private textSimService: PostService, private formBuilder: FormBuilder) {
     this.textForm = this.formBuilder.group({
       text1: ['', [Validators.required]],
@@ -31,6 +32,7 @@ export class TextSimilarityComponent implements OnInit {
       String(localStorage.getItem("token"))
     ).subscribe(result => {
       this.textForm.reset();
+      console.log(result)
       this.simResult = result.similarity*100 //todo ima inf broj 999999 iseci na 2 decimale
     })
   }
