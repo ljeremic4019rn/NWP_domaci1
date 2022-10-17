@@ -3,7 +3,7 @@
   <div>
     <form (submit)="setToken()" class="mb-5">
       <div class="form-group mb-2">
-        <label for="token">Enter your token</label>
+        <label for="token">Your current token is: {{ savedToken }}</label>
         <input type="text" class="form-control" id="token" name="token" placeholder="token" [(ngModel)]="token">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>

@@ -31,7 +31,7 @@ export class TextSimilarityComponent implements OnInit {
       String(localStorage.getItem("token"))
     ).subscribe(result => {
       this.textForm.reset();
-      this.simResult = result.similarity
+      this.simResult = result.similarity*100
     })
   }
 

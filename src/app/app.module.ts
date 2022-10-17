@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './components/home/home.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {PasswordPipe} from "./pipes/password.pipe";
@@ -17,7 +16,6 @@ import {TokenEntryComponent} from "./components/token-entry/token-entry.componen
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     PasswordPipe,
     EntityExtractionComponent,
     TextSimilarityComponent,

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {HomeComponent} from "./components/home/home.component";
 import {EntityExtractionComponent} from "./components/entity-extraction/entity-extraction.component";
 import {TextSimilarityComponent} from "./components/text-similarity/text-similarity.component";
 import {LanguageDetectionComponent} from "./components/language-detection/language-detection.component";
