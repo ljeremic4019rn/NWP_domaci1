@@ -10,13 +10,11 @@ import {Post, Comment, TextSimRes, TextSimReq} from "../model";
 })
 export class PostService {
 
-  // private readonly apiUrl = environment.postApi;
-
   constructor(private httpClient: HttpClient) {
   }
 
   compareTexts(text1: string, text2: string, token: string): Observable<TextSimRes> {
-    return this.httpClient.get<TextSimRes>(`https://api.dandelion.eu/datatxt/sim/v1/?text1=Cameron wins the Oscar&text2=All nominees for the Academy Awards&token=040a70ea8796446db7174acaf8f42884`)
+    return this.httpClient.get<TextSimRes>(`${environment.textSimilarity}/?text1=${text1}&text2=${text2}&token=${token}`,)
   }
 
 }

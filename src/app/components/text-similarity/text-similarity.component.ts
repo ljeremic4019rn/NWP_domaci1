@@ -31,7 +31,7 @@ export class TextSimilarityComponent implements OnInit {
       String(localStorage.getItem("token"))
     ).subscribe(result => {
       this.textForm.reset();
-      this.simResult = result.similarity*100
+      this.simResult = result.similarity*100 //todo ima inf broj 999999 iseci na 2 decimale
     })
   }
 
