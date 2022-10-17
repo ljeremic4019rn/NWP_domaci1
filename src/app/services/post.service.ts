@@ -10,7 +10,7 @@ import {Post, Comment, TextSimRes, TextSimReq} from "../model";
 })
 export class PostService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient) { //040a70ea8796446db7174acaf8f42884
   }
 
   compareTexts(text1: string, text2: string, token: string): Observable<TextSimRes> {
