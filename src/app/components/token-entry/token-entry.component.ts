@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./token-entry.component.css']
 })
 export class TokenEntryComponent implements OnInit {
+  
+  token: string;
 
-  constructor() { }
+  constructor() {
+    this.token = '';
+  }
 
   ngOnInit(): void {
+  }
+
+  setToken(): void {
+    localStorage.setItem("token", this.token);
+    console.log(localStorage.getItem("token"));
   }
 
 }

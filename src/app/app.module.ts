@@ -8,11 +8,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {PasswordPipe} from "./pipes/password.pipe";
 import {AppComponent} from "./components/app/app.component";
 import {EntityExtractionComponent} from "./components/entity-extraction/entity-extraction.component";
-import {TextSimilarityComponent} from "./components/text-similarity/text-similarity.component";
 import {LanguageDetectionComponent} from "./components/language-detection/language-detection.component";
 import {SentimentAnalysisComponent} from "./components/sentiment-analysis/sentiment-analysis.component";
-import {TokenEntryComponent} from "./components/token-entry/token-entry.component";
 import {ApiHistoryComponent} from "./components/api-history/api-history.component";
+import {TextSimilarityComponent} from "./components/text-similarity/text-similarity.component";
+import {TokenEntryComponent} from "./components/token-entry/token-entry.component";
 
 @NgModule({
   declarations: [

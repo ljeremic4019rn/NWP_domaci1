@@ -1,1 +1,18 @@
-<p>text-similarity works!</p>
+<div>
+  <h3>Text similarity</h3>
+  <form [formGroup]="textForm" (submit)="getSimilarity()" class="mb-5">
+    <div class="form-group">
+      <label for="text">Text 1</label>
+      <textarea class="form-control" id="text" placeholder="Enter your first text" rows="4" [formControlName]="'text1'"></textarea>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="text">Text 2</label>
+      <textarea class="form-control" id="text2" placeholder="Enter your second text" rows="4" [formControlName]="'text2'"></textarea>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <br>
+  <p>The similarity of your texts is: <b>{{ simResult }}</b></p>
+</div>

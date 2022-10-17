@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  postApi: 'https://jsonplaceholder.typicode.com'
+  entityExtraction: '',
+  textSimilarity: 'https://api.dandelion.eu/datatxt/sim/v1',
+  languageDetection: '',
+  sentimentAnalysis: ''
 };
 
 /*
