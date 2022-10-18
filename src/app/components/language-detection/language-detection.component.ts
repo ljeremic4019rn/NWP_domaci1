@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DetectedLang, LanguageDetReq} from "../../model";
+import {DetectedLanguage} from "../../model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PostService} from "../../services/post.service";
 
@@ -11,23 +11,12 @@ import {PostService} from "../../services/post.service";
 export class LanguageDetectionComponent implements OnInit {
 
 
-  languageDetReq: LanguageDetReq = {
-    text: '',
-    option: false,
-    token: '',
-    detectedLangs: []
-  };
-
-  resultArray: Array<DetectedLang>;
-  cleanOptionEnabled: boolean;
   detectionForm: FormGroup
+  result: Array<DetectedLanguage> = []
+  cleanBool: boolean = false
 
   constructor(private languageDetService: PostService, private formBuilder: FormBuilder) {
-    this.detectionForm = this.formBuilder.group({
-      text: ['', [Validators.required]]
-    })
-    this.cleanOptionEnabled = false
-    this.resultArray = []
+    this.detectionForm = this.formBuilder.group({text: ['', [Validators.required]]})
   }
 
   ngOnInit(): void {
@@ -36,11 +25,11 @@ export class LanguageDetectionComponent implements OnInit {
   detectLanguages() {
     this.languageDetService.detectLanguages(
       this.detectionForm.get('text')?.value,
-      this.cleanOptionEnabled,
+      this.cleanBool,
       String(localStorage.getItem("token"))
     ).subscribe(result => {
-      this.detectionForm.reset(),
-        this.resultArray = result.detectedLangs;
+      this.detectionForm.reset()
+        this.result = result.detectedLangs
     })
   }
 }

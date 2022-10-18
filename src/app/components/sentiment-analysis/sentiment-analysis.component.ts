@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Color, Sentiment} from "../../model";
+import {Sentiment} from "../../model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PostService} from "../../services/post.service";
 
@@ -10,49 +10,35 @@ import {PostService} from "../../services/post.service";
 })
 export class SentimentAnalysisComponent implements OnInit {
 
-  color: Color
-
-  lang: string
-  typeColor: string = 'black'
-  resultSentiment: Sentiment
   sentimentForm: FormGroup
+  rgbColor: string = ''
+  resultSentiment: Sentiment = new Sentiment()
+  language: string = 'auto'
 
-  constructor(private sentimentAnService: PostService, private formBuilder: FormBuilder) {
-    this.sentimentForm = this.formBuilder.group({
-      text: ['', [Validators.required]]
-    })
-    this.lang = 'auto'
-    this.resultSentiment = new Sentiment
-    this.color = new Color(0, 0, 0)
+
+  constructor(private service: PostService, private formBuilder: FormBuilder) {
+    this.sentimentForm = this.formBuilder.group({text: ['', [Validators.required]]})
   }
 
   ngOnInit(): void {
   }
 
-  hsl_col_perc(score: number): void{
-    var hue = ((score + 1)/2)*120
-    this.typeColor = 'hsl('+hue+', 100%, 50%)'
-  }
-
-  public test (a: Color, b: Color, t: number): Color {
-    return new Color
-    (
-      a.r + (b.r - a.r) * t,
-      a.g + (b.g - a.g) * t,
-      a.b + (b.b - a.b) * t
-    )
+  createColor(score: number): void{
+    let green = ((score + 1)/2) * 255
+    if (green < 0) green = 0
+    let red = 255 - green
+    this.rgbColor = 'rgb(' + red +', '+ green +', 0)'
   }
 
   analyseSentiment() {
-    this.sentimentAnService.analyseSentiment(
+    this.service.analyseSentiment(
       this.sentimentForm.get('text')?.value,
-      this.lang,
+      this.language,
       String(localStorage.getItem("token"))
     ).subscribe(result => {
       this.sentimentForm.reset()
-        this.resultSentiment = result.sentiment//todo popravi boje
-      this.hsl_col_perc(this.resultSentiment.score)
-
+      this.resultSentiment = result.sentiment
+      this.createColor(this.resultSentiment.score)
     })
   }
 

@@ -2,7 +2,7 @@
   <h3>Sentiment analysis</h3>
   <div class="form-group">
     <label for="languageSelection">Language selection</label>
-    <select [(ngModel)]="lang" class="form-control" id="languageSelection">
+    <select [(ngModel)]="language" class="form-control" id="languageSelection">
       <option>auto</option>
       <option>en</option>
       <option>it</option>
@@ -16,8 +16,6 @@
     <br>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-  <p>The strength of the detected sentiment is <b>{{ resultSentiment.score.toFixed(2) }}</b>
-<!--    and its type is <b [style]="{color: typeColor}">{{ resultSentiment.type }}</b>.</p>-->
-    and its type is <b [style]="{color: typeColor}">{{ resultSentiment.type }}</b>.</p>
+  <p>Sentiment score is <b>{{ resultSentiment.score.toFixed(2) }}</b> and its type is <b [style.color]= rgbColor >{{ resultSentiment.type }}</b></p>
 
 </div>

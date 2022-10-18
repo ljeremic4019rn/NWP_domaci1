@@ -11,9 +11,9 @@ export class ApiHistoryComponent implements OnInit {
 
   savedTransactions: Transaction[] = []
 
-  constructor(private postService: PostService) { }
+  constructor(private service: PostService) { }
 
   ngOnInit(): void {
-    this.savedTransactions = this.postService.savedTransactions
+    this.savedTransactions = this.service.savedTransactions
   }
 }

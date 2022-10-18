@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Entity} from "../../model";
 import {PostService} from "../../services/post.service";
@@ -10,49 +10,41 @@ import {PostService} from "../../services/post.service";
 })
 export class EntityExtractionComponent implements OnInit {
 
-
-  min_confidence: number
-
-  includeString: string
-  includeAbstract: boolean
-  includeCategories: boolean
-  includeImage: boolean
-
-  resultArray: Array<Entity>
   extractionForm: FormGroup
+  includedString: string = ''
+  abstractBool: boolean = false
+  categoriesBool: boolean = false
+  imageBool: boolean = false
+  minConfidence: number = 0.5
+  result: Array<Entity> = []
 
-  constructor(private entityExtService: PostService, private formBuilder: FormBuilder) {
-    this.extractionForm = this.formBuilder.group({
-      text: ['', [Validators.required]]
-    })
-    this.min_confidence = 0.6
-    this.includeString = ''
-    this.includeAbstract = false
-    this.includeCategories = false
-    this.includeImage = false
-    this.resultArray = []
+  constructor(private service: PostService, private formBuilder: FormBuilder) {
+    this.extractionForm = this.formBuilder.group({text: ['', [Validators.required]]})
   }
 
   ngOnInit(): void {
   }
 
+  checkIncludedCategories() {
+    if (this.abstractBool) this.includedString += "abstract,"
+    if (this.categoriesBool) this.includedString += "categories,"
+    if (this.imageBool) this.includedString += "image"
+  }
+
   extractEntities() {
-    this.includeString = ''
+    this.includedString = ''
 
-    if(this.includeAbstract) this.includeString += "abstract,"
-    if(this.includeCategories) this.includeString += "categories,"
-    if(this.includeImage) this.includeString += "image"
+    this.checkIncludedCategories()
 
-    this.entityExtService.extractEntities(
+    this.service.extractEntities(
       this.extractionForm.get('text')?.value,
-      this.min_confidence,
-      this.includeString,
+      this.minConfidence,
+      this.includedString,
       String(localStorage.getItem("token"))
     ).subscribe(result => {
-      this.extractionForm.reset(),
-        this.resultArray = result.annotations
+      this.extractionForm.reset()
+      this.result = result.annotations
     })
-    console.log(this.resultArray)
   }
 
 }
